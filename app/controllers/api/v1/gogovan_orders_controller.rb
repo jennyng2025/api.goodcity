@@ -41,6 +41,11 @@ module Api::V1
       render json: @gogovan_order, serializer: serializer
     end
 
+    api :GET, '/v1/gogovan_orders/1', "List a gogovan_order"
+    def show
+      render json: @gogovan_order, serializer: serializer
+    end
+
     private
 
     def order_params

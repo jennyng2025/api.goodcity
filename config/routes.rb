@@ -70,6 +70,7 @@ Rails.application.routes.draw do
 
       post "gogovan_orders" => "gogovan_orders#confirm_order"
       post "gogovan_orders/calculate_price" => "gogovan_orders#calculate_price"
+      get "gogovan_orders/:id" => "gogovan_orders#show"
 
       get "available_dates" => "holidays#available_dates"
       get "timeslots" => "timeslots#index"

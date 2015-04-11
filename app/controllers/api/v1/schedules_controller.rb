@@ -38,6 +38,7 @@ module Api::V1
     param_group :schedule
     def create
       @schedule.attributes = schedule_params
+      assign_delivery
       if @schedule.save
         render json: @schedule, serializer: serializer, status: 201
       else
@@ -47,13 +48,18 @@ module Api::V1
 
     private
 
+    def assign_delivery
+      delivery = params["schedule"]["current_delivery_id"]
+      @schedule.deliveries << Delivery.find_by(id: delivery) if delivery
+    end
+
     def serializer
       Api::V1::ScheduleSerializer
     end
 
     def schedule_params
       params.require(:schedule).permit(:resource, :slot, :scheduled_at,
-                                       :slot_name, :zone)
+        :slot_name, :zone)
     end
   end
 end

@@ -73,7 +73,7 @@ class Ability
       can :create, Schedule
 
       # GogovanOrder
-      can [:calculate_price, :confirm_order, :destroy], GogovanOrder
+      can [:calculate_price, :confirm_order, :destroy, :show], GogovanOrder
 
       # User
       can [:show, :update], User, id: user_id

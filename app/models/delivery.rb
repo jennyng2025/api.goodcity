@@ -9,6 +9,7 @@ class Delivery < ActiveRecord::Base
 
   before_save :update_offer_state
   before_destroy :push_back_offer_state
+  before_destroy :remove_schedule
 
   def update_offer_state
     self.delivery_type = self.delivery_type.titleize
@@ -20,6 +21,12 @@ class Delivery < ActiveRecord::Base
 
   def push_back_offer_state
     offer.try(:cancel_schedule)
+    true
+  end
+
+  def remove_schedule
+    deliveries = schedule.try(:deliveries).try(:count) || 0
+    schedule.destroy if deliveries == 1
     true
   end
 
