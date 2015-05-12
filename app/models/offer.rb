@@ -199,9 +199,7 @@ class Offer < ActiveRecord::Base
   end
 
   def send_ggv_cancel_order_message
-    text = I18n.t("offer.ggv_cancel_message",
-      time: "#{delivery.try(:schedule).try(:formatted_date_and_slot)}")
-    messages.create(body: text, sender: User.system_user)
+    messages.create(body: cancel_message, sender: User.system_user)
     send_notification(text)
   end
 
@@ -214,6 +212,13 @@ class Offer < ActiveRecord::Base
   end
 
   private
+
+  def cancel_message
+    time = delivery.try(:schedule).try(:formatted_date_and_slot)
+    text = I18n.t("offer.ggv_cancel_message", time: time, locale: "en")
+    text += "<br/>"
+    text += I18n.t("offer.ggv_cancel_message", time: time, locale: "zh-tw")
+  end
 
   # Set a default offer language if it hasn't been set already
   def set_language
