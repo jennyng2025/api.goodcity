@@ -200,7 +200,7 @@ class Offer < ActiveRecord::Base
 
   def send_ggv_cancel_order_message
     messages.create(body: cancel_message, sender: User.system_user)
-    send_notification(text)
+    send_notification(cancel_message)
   end
 
   def send_notification(text)
