@@ -1,6 +1,6 @@
 module Api::V1
   class UserProfileSerializer < ApplicationSerializer
-    embed :ids, include: true
+    # embed :ids, include: true
 
     attributes :id, :first_name, :last_name, :mobile
 

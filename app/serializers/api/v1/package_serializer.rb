@@ -1,7 +1,7 @@
 module Api::V1
 
   class PackageSerializer < ApplicationSerializer
-    embed :ids, include: true
+    # embed :ids, include: true
 
     has_one :package_type, serializer: PackageTypeSerializer
 

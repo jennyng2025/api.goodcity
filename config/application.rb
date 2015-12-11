@@ -42,5 +42,7 @@ module GoodCityServer
     end
 
     config.active_record.raise_in_transactional_callbacks = true
+
+    ActiveModel::Serializer.config.adapter = :json_api
   end
 end

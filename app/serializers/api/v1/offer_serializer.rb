@@ -3,7 +3,7 @@ module Api::V1
   class OfferSerializer < ApplicationSerializer
     include SerializeTimeValue
 
-    embed :ids, include: true
+    # embed :ids, include: true
 
     attributes :id, :language, :state, :origin, :stairs, :parking,
       :estimated_size, :notes, :created_by_id, :created_at,

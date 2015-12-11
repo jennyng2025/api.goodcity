@@ -1,7 +1,7 @@
 module Api::V1
 
   class PackageCategorySerializer < ApplicationSerializer
-    # embed :ids, include: true
+    # # embed :ids, include: true
     attributes :id, :name, :parent_id, :package_type_codes
 
     def name__sql

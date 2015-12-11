@@ -1,7 +1,7 @@
 module Api::V1
 
   class ItemSerializer < ApplicationSerializer
-    embed :ids, include: true
+    # embed :ids, include: true
 
     attributes :id, :donor_description, :state, :offer_id, :reject_reason,
       :saleable, :created_at, :updated_at, :package_type_id,
